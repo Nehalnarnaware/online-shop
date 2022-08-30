@@ -7,12 +7,10 @@ node{
     
     stage('Run Docker Compose File')
     {
-        sh 'docker version'
-        sh 'docker build -t jhooq-docker-demo .'
-        sh 'docker image list'
-        sh 'docker tag jhooq-docker-demo snehalnar/nehal2:jhooq-docker-demo'
+        sh 'sudo docker-compose build'
+        sh 'sudo docker-compose up -d'
     }
-  stage('PUSH image to Docker Hub')
+    stage('PUSH image to Docker Hub')
     {
       /* withCredentials([string(credentialsId: 'DockerHubPassword', variable: 'DHPWD')]) 
         {
